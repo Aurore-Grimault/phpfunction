@@ -66,11 +66,13 @@ if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password)
 
 } else {
 
-    echo '<div> Mot de passe valide. </div> <br>    
-    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>';
+    echo '<div> Mot de passe valide. </div> <br>';    
+    echo '<div class =row>
+            <div class="col-1 mx-auto">  
+            <a class="btn btn-success me-3" role="button" href="./index.php/">  Ok </a>' ; 
+            } 
+
 }  
-    
 
 
-}
 ?>
