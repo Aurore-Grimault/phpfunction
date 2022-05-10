@@ -28,7 +28,6 @@
                          
                 include_once './functions/aurore.php';
                 checkPassword($password);
-                
 
             }
 
