@@ -1,5 +1,5 @@
 <?php
-  //
+  include_once 'functions/aurore.php';
 ?>
 
 <!DOCTYPE html>
@@ -20,31 +20,29 @@
 
             <?php
 
-            if (isset($_GET['password'])) {
+                if (isset($_GET['password'])) {
 
-                $password = $_GET['password'];
+                    $password = $_GET['password'];
 
-                // I use my personal function with my namespace
-                         
-                include_once './functions/aurore.php';
-                checkPassword($password);
+                    // I use my personal function with my namespace
+                    aurore\checkPassword($password);
 
-            }
+                }
 
-            else {
+                else {
 
-                ?>
+            ?>
 
-                <div class="alert alert-info" role="alert">
-                    <h4 class="alert-heading">Bonjour et bienvenue 🙂</h4>
-                    <p>Vérifions si votre mot de passe est bien sécurisé !</p>
-                    <hr>
-                    <p>Pour celà, il vous suffit de le renseigner directement dans l'URL comme dans l'example ci-dessous :</p>
-                    <a href="index.php?password=motdepasse" class="link-primary mb-0">index.php?password=motdepasse</a>
-                </div>
+                    <div class="alert alert-info" role="alert">
+                        <h4 class="alert-heading">Bonjour et bienvenue 🙂</h4>
+                        <p>Vérifions si votre mot de passe est bien sécurisé !</p>
+                        <hr>
+                        <p>Pour celà, il vous suffit de le renseigner directement dans l'URL comme dans l'example ci-dessous :</p>
+                        <a href="index.php?password=motdepasse" class="link-primary mb-0">index.php?password=motdepasse</a>
+                    </div>
 
-                <?php
-            }
+            <?php
+                }
 
             ?>
 
