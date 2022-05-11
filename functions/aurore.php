@@ -16,7 +16,7 @@
             $number = preg_match('@[0-9]@', $password);
             $lowercase = preg_match('@[a-z]@', $password);
             $uppercase = preg_match('@[A-Z]@', $password);
-            $specialChars = preg_match('@[$#.*]@', $password);
+            $specialChars = preg_match('@[-&(_)=+$^ù*:!;,?]@', $password);
             $strlen = preg_match('@[1-12]@', $password);
 
             //force du mot de passe
@@ -77,6 +77,7 @@
                         echo '</ul> <br>
 
                     </div> ';
+
                     echo '<div class="text-end"> Force du mot de passe </div>';
                     switch($errors) {
                                 case 1 : $percent = 80;
@@ -96,8 +97,8 @@
                         }   
                             
                     echo '<div class="progress">
-                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-' .$color. '" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:' .$percent. '%"> </div> 
-                    </div> <br>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-' .$color. '" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:' .$percent. '%"> </div> 
+                        </div> <br>
 
                 </div>';                
                                   
@@ -105,7 +106,8 @@
 
             echo '<div> Mot de passe valide. </div> <br>';    
             echo '<div class="progress">
-                        <div class="progress-bar progress-bar-animated progress-bar-striped bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div> </div> <br>';
+                        <div class="progress-bar progress-bar-animated progress-bar-striped bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div> 
+                    </div> <br>';
             echo '<div class =row>
                     <div class="col-1 mx-auto">  
                         <a class="btn btn-success me-3" role="button" href="./index.php/">  Ok </a>
