@@ -19,44 +19,47 @@
             $lowercase = preg_match('@[a-z]@', $password);
             $uppercase = preg_match('@[A-Z]@', $password);
             $specialChars = preg_match('@[$#.*]@', $password);
+            $strlen = preg_match('@[1-12]@', $password);
 
                         //concerne barre de progression
 
                             // echo '<div class="progress">
                             //     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div> 
                         // </div> <br>';
-                        
-                        $progression = array("$number",  "$lowercase", "$uppercase",  "$specialChars", strlen($password) < 12);
 
-                        print_r($progression);
+                        // $progression = array("$number", "$lowercase", "$uppercase",  "$specialChars", "$strlen");
 
-                        // pour compter les éléments dans le tableau nommé progression
-                        count($progression);
+                        // print_r($progression);
 
-                        if ($progression == 4) {
-                                echo '<div class="progress">
-                                <div class="progress-bar progress-bar-animated progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div> </div> <br>';
-                            }   
-                            elseif ($progression == 3) {
-                                echo '<div class="progress">
-                                <div class="progress-bar progress-bar-animated progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div> </div> <br>';
-                            }
-                            elseif ($progression == 2) {
-                                echo '<div class="progress">
-                                <div class="progress-bar progress-bar-animated progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div> </div> <br>';
-                            }
-                            elseif ($progression == 1) {
-                                echo '<div class="progress"> 
-                                <div class="progress-bar progress-bar-animated progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> </div> <br>';
-                            }
-                            elseif ($progression == 0) {
-                                echo '<div class="progress">
-                                <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> </div> <br>';
-                            }
+                        // // pour compter les éléments dans le tableau nommé progression
+                        // count($progression);
+                        // print_r(count($progression));
+
+                        // if ($progression == 4) {
+                        //         echo '<div class="progress">
+                        //         <div class="progress-bar progress-bar-animated progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div> </div> <br>';
+                        //     }   
+                        //     elseif ($progression == 3) {
+                        //         echo '<div class="progress">
+                        //         <div class="progress-bar progress-bar-animated progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div> </div> <br>';
+                        //     }
+                        //     elseif ($progression == 2) {
+                        //         echo '<div class="progress">
+                        //         <div class="progress-bar progress-bar-animated progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div> </div> <br>';
+                        //     }
+                        //     elseif ($progression == 1) {
+                        //         echo '<div class="progress"> 
+                        //         <div class="progress-bar progress-bar-animated progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> </div> <br>';
+                        //     }
+                        //     elseif ($progression == 0) {
+                        //         echo '<div class="progress">
+                        //         <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div> </div> <br>';
+                        //     }
                          
-                        else {echo '<div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div> </div> <br>';
-                        }
+                        // else {echo '<div class="progress">
+                        //     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div> </div> <br>';
+                        // }
+
 
             //force du mot de passe
         if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 12) {
@@ -65,9 +68,10 @@
                     <div class="col-4 mx-auto">   
                         <ul class="list-group">
                             <li class="list-group-item active" aria-current="true"> Le mot de passe doit contenir au moins : </li>';
-
+                            $errors = 0;
                             if (!$number) {
                                 echo '<li class="list-group-item"> 1 chiffre </li>';
+                                $errors ++;
                             }
                             else {
                                 echo '<li class="list-group-item"> 1 chiffre ok </li>';
@@ -75,6 +79,7 @@
 
                             if (!$lowercase) {
                                 echo '<li class="list-group-item"> 1 minuscule </li>';
+                                $errors ++;
                             }
                             else {
                                 echo '<li class="list-group-item"> 1 minuscule ok </li>';
@@ -82,13 +87,15 @@
 
                             if (!$uppercase) {
                                 echo '<li class="list-group-item"> 1 majuscule </li>';
+                                $errors ++;
                             }
                             else {
                                 echo '<li class="list-group-item"> 1 majuscule ok </li>';
                             }
                             
                             if (!$specialChars) {
-                            echo '<li class="list-group-item"> 1 caractère spécial </li>';
+                                echo '<li class="list-group-item"> 1 caractère spécial </li>';
+                                $errors ++;
                             }
                             else {
                                 echo '<li class="list-group-item"> 1 caractère spécial ok </li>';
@@ -96,13 +103,22 @@
 
                             if (strlen($password) < 12) {
                                 echo '<li class="list-group-item"> 12 caractères </li>';
+                                $errors ++;
                             }
                             else {
                                 echo '<li class="list-group-item"> 12 caractères ok </li>';
                             }
-                
+                            
+                            print_r ($errors); 
                         echo '</ul>
+
                     </div>
+                    
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"> </div> 
+
+                    </div> <br>
+
                 </div>';
                                   
         } else {
