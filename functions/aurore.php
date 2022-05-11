@@ -22,10 +22,11 @@
             //force du mot de passe
         if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 12) {
         
-            echo '<div class =row> 
+            echo '<div class ="row"> 
                     <div class="col-4 mx-auto">   
                         <ul class="list-group">
                             <li class="list-group-item active" aria-current="true"> Le mot de passe doit contenir au moins : </li>';
+                            
                             $errors = 0;
 
                             if (!$number) {
@@ -79,6 +80,7 @@
                     </div> ';
 
                     echo '<div class="text-end"> Force du mot de passe </div>';
+
                     switch($errors) {
                                 case 1 : $percent = 80;
                                 $color = "primary" ;
@@ -94,13 +96,12 @@
                                 break;
                                 case 5 : $percent = 0;
                                 break;   
-                        }   
-                            
+                    }   
+
+                    echo '</div>';        
                     echo '<div class="progress">
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-' .$color. '" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:' .$percent. '%"> </div> 
-                        </div> <br>
-
-                </div>';                
+                        </div> <br>';             
                                   
         } else {
 
